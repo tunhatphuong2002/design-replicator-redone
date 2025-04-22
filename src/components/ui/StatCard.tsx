@@ -1,3 +1,4 @@
+
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -14,28 +15,30 @@ export const StatCard: React.FC<StatCardProps> = ({
   value,
   icon,
   className,
-  background = "https://cdn.builder.io/api/v1/image/assets/a49eb3d9dab54612b6a60c9b4c26d13d/5930e632f397fc79fd9227956c297ded4ade51e0?placeholderIfAbsent=true",
+  background,
 }) => {
   return (
     <div
       className={cn(
-        "flex flex-col self-stretch relative aspect-[2.323] font-normal justify-between flex-1 shrink basis-[0%] my-auto p-[18px] rounded-[18px]",
+        "flex flex-col relative aspect-[2.323] font-normal justify-between flex-1 shrink basis-[0%] my-auto p-[18px] rounded-[12px] border border-[rgba(45,45,45,1)] bg-[rgba(15,15,16,1)] min-w-[120px]",
         className,
       )}
     >
-      <img
-        src={background}
-        className="absolute h-full w-full object-cover inset-0"
-        alt=""
-      />
+      {background && (
+        <img
+          src={background}
+          className="absolute h-full w-full object-cover inset-0 rounded-[12px]"
+          alt=""
+        />
+      )}
       <div className="relative flex-1 shrink basis-[0%]">
-        <div className="text-[rgba(121,121,121,1)] text-2xl">{value}</div>
-        <div className="text-[rgba(190,190,190,1)] text-base mt-3">{title}</div>
+        <div className="text-[rgba(251,253,255,1)] text-xl font-medium">{value}</div>
+        <div className="text-[rgba(121,121,121,1)] text-sm mt-2">{title}</div>
       </div>
       {icon && (
         <img
           src={icon}
-          className="aspect-[1] object-contain w-6 shrink-0"
+          className="aspect-[1] object-contain w-5 shrink-0 absolute top-3 right-3"
           alt=""
         />
       )}

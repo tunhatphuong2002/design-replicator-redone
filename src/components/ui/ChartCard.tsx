@@ -1,3 +1,4 @@
+
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -17,13 +18,13 @@ export const ChartCard: React.FC<ChartCardProps> = ({
   return (
     <div
       className={cn(
-        "bg-[rgba(31,31,33,1)] border min-h-80 w-full p-[18px] rounded-[18px] border-[rgba(73,73,76,1)] border-solid",
+        "bg-[rgba(22,22,22,1)] border min-h-80 w-full p-[18px] rounded-[12px] border-[rgba(45,45,45,1)] border-solid",
         className,
       )}
     >
       <div className="flex w-full items-center gap-[40px_100px] justify-between flex-wrap">
         <div className="self-stretch">
-          <div className="text-[rgba(190,190,190,1)] text-sm font-medium leading-none">
+          <div className="text-[rgba(121,121,121,1)] text-sm font-medium leading-none">
             {title}
           </div>
         </div>

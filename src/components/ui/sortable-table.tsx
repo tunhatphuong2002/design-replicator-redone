@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -194,62 +193,54 @@ export function SortableTable<T>({
       </div>
 
       {totalPages > 1 && (
-        <div className="flex justify-between items-center pt-4 px-5 pb-2 text-sm">
-          <span className="text-gray-500">{currentPage} of {totalPages}</span>
-          <Pagination className="justify-end">
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious 
-                  href="#" 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (currentPage > 1) setCurrentPage(currentPage - 1);
-                  }}
-                  className={cn(
-                    currentPage === 1 && "pointer-events-none opacity-50",
-                    "bg-[#232325] border-[#33333a] hover:bg-[#2a2a2d]"
-                  )}
-                />
-              </PaginationItem>
-              
-              {renderPageNumbers().map((page, i) => (
-                <PaginationItem key={i}>
-                  {page === "..." ? (
-                    <span className="flex h-9 w-9 items-center justify-center text-gray-500">...</span>
-                  ) : (
-                    <PaginationLink
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setCurrentPage(page as number);
-                      }}
-                      isActive={currentPage === page}
-                      className={cn(
-                        "bg-[#232325] border-[#33333a] hover:bg-[#2a2a2d]",
-                        currentPage === page && "bg-primary text-white hover:bg-primary"
-                      )}
-                    >
-                      {page}
-                    </PaginationLink>
-                  )}
-                </PaginationItem>
-              ))}
-              
-              <PaginationItem>
-                <PaginationNext 
-                  href="#" 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-                  }}
-                  className={cn(
-                    currentPage === totalPages && "pointer-events-none opacity-50",
-                    "bg-[#232325] border-[#33333a] hover:bg-[#2a2a2d]"
-                  )}
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+        <div className="flex justify-center items-center pt-4 px-5 pb-2 text-sm gap-8">
+          <button
+            onClick={() => {
+              if (currentPage > 1) setCurrentPage(currentPage - 1);
+            }}
+            disabled={currentPage === 1}
+            aria-label="Go to previous page"
+            className={cn(
+              "flex items-center justify-center w-14 h-14 rounded-full bg-[#232325] shadow-md transition-colors",
+              currentPage === 1
+                ? "opacity-40 cursor-not-allowed"
+                : "hover:bg-[#29292c]"
+            )}
+            style={{
+              minWidth: 56, minHeight: 56,
+              boxShadow: '0 2px 12px 0 rgba(0,0,0,.18)'
+            }}
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+          <span className="font-medium text-white text-xl select-none" style={{
+            letterSpacing: 0.5,
+          }}>
+            {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => {
+              if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+            }}
+            disabled={currentPage === totalPages}
+            aria-label="Go to next page"
+            className={cn(
+              "flex items-center justify-center w-14 h-14 rounded-full bg-[#232325] shadow-md transition-colors",
+              currentPage === totalPages
+                ? "opacity-40 cursor-not-allowed"
+                : "hover:bg-[#29292c]"
+            )}
+            style={{
+              minWidth: 56, minHeight: 56,
+              boxShadow: '0 2px 12px 0 rgba(0,0,0,.18)'
+            }}
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 6 15 12 9 18"/>
+            </svg>
+          </button>
         </div>
       )}
     </div>

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -13,7 +14,8 @@ export const SidePanel: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-md:mt-8">
+    <div className="w-full max-md:mt-8 md:sticky md:top-[100px] md:self-start">
+      {/* Right panel is now sticky for scrolling on desktop */}
       <div className="w-full">
         <div className="bg-[rgba(30,30,30,1)] border flex w-full gap-[40px_46px] justify-between p-[18px] rounded-[18px] border-[rgba(73,73,76,1)] border-solid">
           <div className="flex flex-col">
